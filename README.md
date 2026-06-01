@@ -6,7 +6,7 @@ A real-time, multi-class firearm detection system built with YOLOv8n. Detects an
 [![YOLOv8](https://img.shields.io/badge/YOLOv8-Ultralytics-purple)](https://github.com/ultralytics/ultralytics)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![License](https://img.shields.io/badge/License-MIT-orange)](LICENSE)
-[![CI](https://github.com/YOUR_USERNAME/firearm-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_USERNAME/firearm-detection/actions)
+[![CI](https://github.com/mutiullahhaneef/firearm-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/mutiullahhaneef/firearm-detection/actions)
 
 ---
 
