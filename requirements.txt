@@ -1,0 +1,21 @@
+# ─────────────────────────────────────────────
+#  Firearm Detection — Requirements
+#  Install: pip install -r requirements.txt
+# ─────────────────────────────────────────────
+
+# Core
+ultralytics>=8.0.0       # YOLOv8 framework (includes torch, torchvision)
+opencv-python-headless   # Image processing — headless = lighter install
+numpy>=1.23.0
+
+# Inference (CPU deployment)
+onnxruntime>=1.16.0      # Fast CPU inference with ONNX models
+
+# Optional: GPU ONNX inference (uncomment if using NVIDIA GPU)
+# onnxruntime-gpu>=1.16.0
+
+# Optional: Download datasets from Roboflow
+# roboflow
+
+# Optional: TensorRT export (NVIDIA only, install separately)
+# tensorrt

@@ -1,0 +1,63 @@
+# ============================================================
+#  Firearm Detection — Training Configuration
+#  Optimized for low-VRAM GPUs (4–8 GB) and fast convergence
+# ============================================================
+
+# --- Paths ---
+path: ./data                  # dataset root
+train: images/train
+val:   images/val
+
+# --- Classes ---
+nc: 1
+names: ["firearm"]
+
+# ============================================================
+#  Core Training Hyperparameters
+# ============================================================
+model:      yolov8n.pt        # nano = fastest; swap to yolov8s.pt for +2% mAP
+imgsz:      416               # 416 > 640 for speed; use 320 on very weak hardware
+epochs:     100
+batch:      16                # safe for 4 GB VRAM; increase to 32 on 8 GB
+workers:    4                 # data-loader threads; match CPU core count
+device:     0                 # GPU index; use 'cpu' if no GPU
+
+# --- Mixed Precision (AMP) ---
+# Cuts VRAM ~50%, speeds up training ~30% on Tensor Core GPUs
+amp: true
+
+# --- Optimizer ---
+optimizer:  AdamW             # AdamW generalises better than SGD on small datasets
+lr0:        0.001             # initial LR
+lrf:        0.01              # final LR = lr0 * lrf  (cosine decay)
+momentum:   0.937
+weight_decay: 0.0005
+warmup_epochs:   3
+warmup_momentum: 0.8
+warmup_bias_lr:  0.1
+
+# --- Augmentation (lightweight set — avoids overfitting on small datasets) ---
+hsv_h:  0.015
+hsv_s:  0.7
+hsv_v:  0.4
+degrees:   10.0               # rotation  ±10°
+translate: 0.1
+scale:     0.5
+shear:     2.0
+flipud:    0.0                # firearms are orientation-sensitive; keep 0
+fliplr:    0.5
+mosaic:    1.0                # mosaic 4-image augmentation — major mAP booster
+mixup:     0.1
+copy_paste: 0.0
+
+# --- Early Stopping ---
+patience: 20                  # stop if no improvement after 20 epochs
+
+# --- Output ---
+project:   runs/train
+name:      firearm_yolov8n
+save:      true
+save_period: 10               # checkpoint every 10 epochs
+cache:     true               # cache images in RAM for faster epochs
+exist_ok:  true
+plots:     true               # save PR/F1 curves

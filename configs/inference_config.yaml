@@ -1,0 +1,9 @@
+confidence_threshold: 0.50
+nms_iou_threshold: 0.45
+model_path: "models/best.pt"
+supported_formats: [".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".webp"]
+output_dir: "outputs"
+save_json: true
+save_annotated: true
+line_width: 2
+font_scale: 0.6

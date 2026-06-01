@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firearm Detection System</title>
+    <!-- Modern, approachable fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="dashboard-wrapper">
+        <header class="app-header">
+            <div class="brand">
+                <div>
+                    <h1>Firearm Detection System</h1>
+                </div>
+            </div>
+            <div class="header-controls">
+                <div class="time-display" id="system-clock">00:00:00</div>
+            </div>
+        </header>
+
+        <section class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-title">Total Scans</span>
+                <span class="metric-value" id="hud-scans">0</span>
+            </div>
+            <div class="metric-card alert-bg">
+                <span class="metric-title">Detected Threats</span>
+                <span class="metric-value" id="hud-threats">0</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-title">Peak Confidence</span>
+                <span class="metric-value" id="hud-accuracy">--</span>
+            </div>
+            <div class="metric-card slider-card">
+                <div class="slider-header">
+                    <span class="metric-title">Threshold</span>
+                    <span class="slider-val" id="slider-value-display">50%</span>
+                </div>
+                <input type="range" id="conf-slider" class="range-slider" min="10" max="95" value="50">
+            </div>
+        </section>
+
+        <div class="main-content">
+            <!-- Left Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Live View</h2>
+                </div>
+                <div class="image-workspace" id="analysis-viewport">
+                    <div id="drop-zone" class="upload-area">
+                        <div class="upload-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                                <polyline points="21 15 16 10 5 21"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Upload Image</h3>
+                        <p>Drag and drop, or click to browse</p>
+                        <input type="file" id="file-input" hidden accept="image/*">
+                    </div>
+
+                    <div id="loading" class="processing-overlay hidden">
+                        <div class="spinner"></div>
+                        <div id="loader-phase">Analyzing image...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2>Analysis Results</h2>
+                </div>
+
+                <div id="result-content" class="hidden">
+                    <div class="result-image-wrapper" id="image-container">
+                        <img id="annotated-image" src="" alt="Analysis Output">
+
+                    </div>
+
+                    <div class="threat-assessment" id="threat-eval-card">
+                        <span class="assessment-title">Assessment</span>
+                        <span class="assessment-badge" id="threat-eval-badge">Clear</span>
+                    </div>
+
+                    <div class="performance-metrics">
+                        <div class="perf-stat">
+                            <span class="perf-label">Processing Time</span>
+                            <span class="perf-value"><span id="inf-time">-</span>ms</span>
+                        </div>
+                        <div class="perf-stat">
+                            <span class="perf-label">Objects Found</span>
+                            <span class="perf-value" id="det-count">0</span>
+                        </div>
+                    </div>
+
+                    <div class="action-bar">
+                        <button id="download-btn" class="button button-primary">
+                            Download Image
+                        </button>
+                    </div>
+
+                    <div class="detections-list">
+                        <h3>Detected Objects</h3>
+                        <div id="detection-list" class="list-wrapper"></div>
+                    </div>
+                </div>
+
+                <div id="results-empty-state" class="empty-state">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h3>No Analysis Yet</h3>
+                    <p>Upload an image to see detection results here.</p>
+                </div>
+            </div>
+
+            <!-- Bottom Panel -->
+            <div class="panel full-width">
+                <div class="panel-header">
+                    <h2>Recent Incidents</h2>
+                </div>
+                <div class="incidents-container" id="incidents-list">
+                    <!-- Incidents go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+enabled: true
+confidence_gate: 0.55
+cooldown_seconds: 60
+channels:
+  sms:
+    enabled: false
+    twilio_sid: ""
+    twilio_token: ""
+    from_number: ""
+    to_number: ""
+  email:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    username: ""
+    password: ""
+    from_addr: ""
+    to_addr: ""
+  webhook:
+    enabled: false
+    url: ""
+    method: "POST"
+incident_logging:
+  enabled: true
+  log_dir: "incidents"
+  retention_days: 30
