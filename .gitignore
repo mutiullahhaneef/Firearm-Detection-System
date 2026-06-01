@@ -1,8 +1,4 @@
-# ──────────────────────────────────────────────────────────────
-#  Firearm Detection System — .gitignore
-# ──────────────────────────────────────────────────────────────
-
-# ── Python ────────────────────────────────────────────────────
+# Python
 __pycache__/
 *.py[cod]
 *.pyo
@@ -12,37 +8,32 @@ __pycache__/
 *.egg-info/
 dist/
 build/
-.eggs/
 
-# ── Environments ──────────────────────────────────────────────
+# Environments
 .env
-.env.*
-!.env.example
 venv/
 .venv/
 venv_gpu/
 env/
-ENV/
 
-# ── Model weights (large binary files — store with Git LFS or share separately) ──
+# Model weights
 models/*.pt
 models/*.onnx
 models/*.engine
 models/*.torchscript
 *.pt
 *.onnx
-*.engine
 
-# ── Training artefacts ────────────────────────────────────────
+# Training artefacts
 runs/
 wandb/
 
-# ── Dataset images & labels (user-supplied) ───────────────────
+# Dataset
 data/images/
 data/labels/
 dataset/
 
-# ── Runtime outputs ───────────────────────────────────────────
+# Runtime outputs
 outputs/
 output/
 uploads/
@@ -50,32 +41,30 @@ incidents/incident_log.json
 incidents/*.jpg
 incidents/*.png
 
-# ── Archives / zips ───────────────────────────────────────────
+# Archives
 *.zip
 *.tar.gz
 *.rar
-firearm-detection/          # nested duplicate directory
-{config,utils,weights,data  # stray folder artefact
+firearm-detection/
 skill-creator/
+{config,utils,weights,data
 
-# ── OS artefacts ──────────────────────────────────────────────
+# OS
 .DS_Store
 Thumbs.db
 Desktop.ini
-ehthumbs.db
 
-# ── IDE / Editor ──────────────────────────────────────────────
+# IDE
 .vscode/
 .idea/
 *.swp
-*.swo
 *~
 
-# ── Jupyter Notebooks ─────────────────────────────────────────
+# Notebooks
 .ipynb_checkpoints/
 *.ipynb
 
-# ── Coverage & test artefacts ─────────────────────────────────
+# Tests / coverage
 .coverage
 htmlcov/
 .pytest_cache/
